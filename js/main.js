@@ -75,7 +75,8 @@ const projectData = {
       title: "Vasudev Bird Control ",
       image: "image/project/Bird-control.png",
       description: "A responsive web app built with Django and SQLite for managing bird control reports. Users can submit sightings, view reports, and admins can manage data via the Django admin panel. The frontend uses HTML, CSS, Bootstrap, and JavaScript for a clean and interactive UI.",
-      githubLink: "https://github.com/saurabhmaurya6746/vasudev-bird-control0"
+      githubLink: "https://github.com/saurabhmaurya6746/vasudev-bird-control0",
+      liveLink: "https://vasudevbirdcontrol.com/"
     },
     5: {
       title: "BNMC College Website",
@@ -164,15 +165,27 @@ const projectData = {
         modalTitle.style.fontWeight = "bold";
 
         // Set the GitHub button link
-      if (projectInfo.githubLink) {
-        githubButton.style.display = "inline-block"; // Show the button
-        githubButton.onclick = () => {
-          window.open(projectInfo.githubLink, "_blank"); // Open the link in a new tab
-        };
-      } else {
-        githubButton.style.display = "none"; // Hide the button if no link is provided
-      }
-        
+const githubButton = document.getElementById("githubButton");
+
+// Reset button
+githubButton.style.display = "none";
+
+// Show "View Live" if liveLink exists
+if (projectInfo.liveLink) {
+  githubButton.textContent = "View Live";
+  githubButton.style.display = "inline-block";
+  githubButton.onclick = () => {
+    window.open(projectInfo.liveLink, "_blank");
+  };
+}
+// Else show "View on GitHub"
+else if (projectInfo.githubLink) {
+  githubButton.textContent = "View on GitHub";
+  githubButton.style.display = "inline-block";
+  githubButton.onclick = () => {
+    window.open(projectInfo.githubLink, "_blank");
+  };
+}
         // Show modal
         modal.style.display = "flex";
       }
